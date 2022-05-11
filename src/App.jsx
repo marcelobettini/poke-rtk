@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PokemonContext from "./PokemonContext";
 import PokemonTable from "./components/PokemonTable";
-import PokemonRow from "./components/PokemonRow";
 import PokemonFilter from "./components/PokemonFilter";
 import PokemonInfo from "./components/PokemonInfo";
 
@@ -30,28 +29,21 @@ function App() {
       data, setData, filter, setFilter, selectedPokemon, setSelectedPokemon
     }
     }>
-      <div
-        style={{
-          margin: "auto",
-          width: 800,
-          paddingTop: "1rem",
-        }}
-      >
+      <div style={{ margin: 'auto', display: "flex", flexDirection: "column", width: '60vw' }}>
         <h1 className="title">Pokemon Search</h1>
+        <PokemonFilter />
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "80% 20%",
-            gridColumnGap: "3rem",
+            gridTemplateColumns: "3fr 1fr",
+            alignItems: 'center',
+            gap: "1.5rem",
           }}
         >
-          <div>
-            <PokemonFilter />
-            <PokemonTable />
+          <PokemonTable />
 
-          </div>
           {/* solo si hay un selectedPokemon vamos a mostrar el componente */}
-          {selectedPokemon && <PokemonInfo {...selectedPokemon} />}
+          {selectedPokemon && <PokemonInfo onDismiss={() => setSelectedPokemon(null)} {...selectedPokemon} />}
         </div>
       </div >
     </PokemonContext.Provider >

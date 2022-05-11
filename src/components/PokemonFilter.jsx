@@ -7,6 +7,7 @@ const PokemonFilter = () => {
     const { filter, setFilter } = useContext(PokemonContext)
 
     return < TextField
+        sx={{ width: '20ch' }}
         label="Search..." variant="filled"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
