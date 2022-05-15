@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setFilter } from "../redux/pokemonSlice";
 const PokemonFilter = () => {
     const dispatch = useDispatch()
-    return < TextField
+    return <TextField
         sx={{ width: '20ch' }}
         label="Search..." variant="filled"
         onChange={(e) => dispatch(setFilter(e.target.value)

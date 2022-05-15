@@ -14,7 +14,6 @@ function App() {
         style={{
           display: "grid",
           gridTemplateColumns: "3fr 1fr",
-          alignItems: 'start',
           marginTop: '2em',
           gap: "1.5rem",
         }}

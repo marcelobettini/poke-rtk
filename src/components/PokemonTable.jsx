@@ -15,12 +15,12 @@ function PokemonTable() {
     }, [])
 
     return (
-        <TableContainer component={Paper} sx={{ display: 'flex' }}>
+        <TableContainer component={Paper}>
             <Table >
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">Name</TableCell>
-                        <TableCell align="center">Type</TableCell>
+                        <TableCell >Name</TableCell>
+                        <TableCell >Type</TableCell>
                         <TableCell align="center">Action</TableCell>
                     </TableRow>
                 </TableHead>
