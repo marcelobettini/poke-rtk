@@ -1,18 +1,15 @@
-import PokemonContext from "../PokemonContext";
-import { useContext } from "react";
 import { TextField } from "@mui/material";
-
+import { useDispatch } from "react-redux";
+import { setFilter } from "../redux/pokemonSlice";
 const PokemonFilter = () => {
-    //atención, no es un array sino un objeto
-    const { filter, setFilter } = useContext(PokemonContext)
-
+    const dispatch = useDispatch()
     return < TextField
         sx={{ width: '20ch' }}
         label="Search..." variant="filled"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e) => dispatch(setFilter(e.target.value)
+        )
+        }
     />
 }
-
 export default PokemonFilter
 

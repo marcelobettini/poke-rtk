@@ -1,12 +1,21 @@
-import React, { useContext } from "react";
 import PokemonRow from "./PokemonRow";
-import PokemonContext from "../PokemonContext";
 import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
 
+import { useDispatch, useSelector } from "react-redux";
+import { setData } from "../redux/pokemonSlice"
+import { useEffect } from "react";
+
 function PokemonTable() {
-    const { filter, data, setSelectedPokemon } = useContext(PokemonContext);
+    const { filter, data } = useSelector((state) => state.pokemon)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        fetch("http://localhost:3000/pokemon.json")
+            .then((res) => res.json())
+            .then((pokemon) => dispatch(setData(pokemon)))
+    }, [])
+
     return (
-        <TableContainer component={Paper} sx={{ display: 'flex', mt: '2em' }}>
+        <TableContainer component={Paper} sx={{ display: 'flex' }}>
             <Table >
                 <TableHead>
                     <TableRow>
@@ -25,7 +34,6 @@ function PokemonTable() {
                             <PokemonRow
                                 key={pokemon.id}
                                 pokemon={pokemon}
-                                onInfo={(pokemon) => setSelectedPokemon(pokemon)}
                             />
                         ))}
                 </TableBody>
